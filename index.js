@@ -51,7 +51,7 @@ function tweet(file) {
 
         // Lets tweet it
         var status = {
-          status: 'I am a tweet',
+          status: '',
           media_ids: media.media_id_string, // Pass the media id string
         }
 
