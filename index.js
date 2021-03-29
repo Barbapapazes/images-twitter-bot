@@ -73,7 +73,7 @@ function tweet(file) {
 
 const files = loadImages('./images')
 
-cron.schedule('45 */1 * * *', () => {
+cron.schedule('45 7-23 * * *', () => {
   const filename = getRandomFrom(files)
   if (filename) {
     const file = loadImage('./images', filename)
