@@ -61,6 +61,8 @@ function tweet(file) {
           function (error, tweet, response) {
             if (!error) {
               console.log(tweet)
+            } else {
+              throw error
             }
           }
         )
@@ -71,12 +73,13 @@ function tweet(file) {
 
 const files = loadImages('./images')
 
-cron.schedule('* * */1 * * *', () => {
+cron.schedule('* 30 */1 * * *', () => {
   const filename = getRandomFrom(files)
-  const file = loadImage('./images', filename)
-
-  tweet(file)
-
-  moveFile(filename, files)
-  removeFrom(files, filename)
+  if (filename) {
+    const file = loadImage('./images', filename)
+    console.log(file)
+    tweet(file)
+    moveFile(filename, files)
+    removeFrom(files, filename)
+  }
 })
